@@ -1,0 +1,10 @@
+.layerItem {
+  width: 100%;
+  height: 56px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  background-color: gray;
+  border: 1px white solid;
+}

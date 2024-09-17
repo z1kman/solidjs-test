@@ -1,0 +1,7 @@
+.layersPanel {
+  width: 240px;
+  height: 500px;
+  border: 1px gray solid;
+  border-radius: 5px;
+  overflow: auto;
+}
