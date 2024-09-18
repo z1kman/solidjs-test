@@ -28,4 +28,39 @@ export class LayersStore {
 
     setLayers(newLayers);
   }
+
+  moveLayer(activeId, targetId, position) {
+    if (activeId === targetId) {
+      return;
+    }
+    const [getLayers, setLayers] = this.layers;
+    const layers = getLayers();
+    const newLayersArr = layers.map((item) => ({
+      id: item.getId(),
+      name: item.getName(),
+    }));
+    const activeItem = newLayersArr.splice(activeId, 1)[0];
+    const overIndex = newLayersArr.findIndex((item) => item.id === targetId)
+
+    if(overIndex === -1 ) return
+
+    if (position === "above") {
+      newLayersArr.splice(overIndex, 0, activeItem);
+    } else {
+      newLayersArr.splice(overIndex + 1, 0, activeItem);
+    }
+
+    const newLayers = [];
+    for (let i = 0; i < newLayersArr.length; i++) {
+      const item = newLayersArr[i];
+      const newLayer = new LayerItemStore();
+      newLayer.setState({
+        id: i,
+        name: item.name,
+      });
+
+      newLayers.push(newLayer);
+    }
+    setLayers(newLayers);
+  }
 }

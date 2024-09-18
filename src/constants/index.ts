@@ -28,3 +28,6 @@ export const NAMES = [
   "Zeta576",
   "Theta395",
 ];
+
+
+export const LAYER_HEIGHT = 56

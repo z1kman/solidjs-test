@@ -10,9 +10,21 @@ export class LayerItemStore {
     const [, setId] = this.id;
     const [, setName] = this.name;
 
-    batch(() => {
-      setId(id);
-      setName(name);
-    });
+    setName(name);
+    setId(id);
+  }
+
+  getId() {
+    const [getter] = this.id;
+    return getter();
+  }
+
+  getName() {
+    const [getter] = this.name;
+    return getter();
+  }
+
+  getState() {
+    return { name: this.getName(), id: this.getId() };
   }
 }
